@@ -15,10 +15,10 @@ async def song(client, message):
     message.from_user["id"]
     args = get_arg(message) + " " + "song"
     if args.startswith(" "):
-        await message.reply("<b>Enter song name❗</b>")
+        await message.reply("<b>Enter song name</b>")
         return ""
     m = await message.reply_text(
-        "Downloading your song,\nPlz wait ⏳️"
+        "Downloading song for you,\n wait ⏳️"
     )
     try:
         r = requests.get(f"https://snobybuddymusic.herokuapp.com/result/?query={args}")
