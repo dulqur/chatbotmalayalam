@@ -28,7 +28,7 @@ def song(client, message):
     for i in message.command[1:]:
         query += ' ' + str(i)
     print(query)
-    m = message.reply('🔎 Finding the song...')
+    m = message.reply('Finding the song...')
     ydl_opts = {"format": "bestaudio[ext=m4a]"}
     try:
         results = YoutubeSearch(query, max_results=1).to_dict()
@@ -47,17 +47,17 @@ def song(client, message):
 
     except Exception as e:
         m.edit(
-            "✖️ Found Nothing. Sorry.\n\nTry another keywork or maybe spell it properly."
+            "Found Nothing. Sorry.\n\nTry another keywork or maybe spell it properly."
         )
         print(str(e))
         return
-    m.edit("`Downloading Song... Please wait ⏱`")
+    m.edit("`Downloading Song... Please wait `")
     try:
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
             info_dict = ydl.extract_info(link, download=False)
             audio_file = ydl.prepare_filename(info_dict)
             ydl.process_info(info_dict)
-        rep = f'🎙 **Title**: [{title[:35]}]({link})\n🎬 **Source**: YouTube\n⏱️ **Duration**: `{duration}`\n👁‍🗨 **Views**: `{views}`\n📤 **By**: @MashaRoBot '
+        rep = f'★ **TITLE**: [{title[:35]}]({link})\n★ **SOURCE**: YouTube\n★ **DURATION**: `{duration}`\n★ **VIEWS**: `{views}`\n★ **BY**: @xandreaRobot '
         secmul, dur, dur_arr = 1, 0, duration.split(':')
         for i in range(len(dur_arr)-1, -1, -1):
             dur += (int(dur_arr[i]) * secmul)
@@ -65,7 +65,7 @@ def song(client, message):
         message.reply_audio(audio_file, caption=rep, thumb=thumb_name, parse_mode='md', title=title, duration=dur)
         m.delete()
     except Exception as e:
-        m.edit('❌ Error')
+        m.edit(' Error')
         print(e)
 
     try:
@@ -75,4 +75,4 @@ def song(client, message):
         print(e)
 
 
-__mod_name__ = "pyrosong"
+__mod_name__ = "SONGS"
