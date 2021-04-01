@@ -33,7 +33,7 @@ async def _(event):
         return
     if event.is_group:
      if not (await is_register_admin(event.input_chat, event.message.sender_id)):
-       await event.reply("🚨 Need Admin Pewer.. You can't use this command.. But you can use in my pm")
+       await event.reply("use in pm admin required")
        return
 
     start = datetime.now()
@@ -95,8 +95,8 @@ async def _(event):
 __help__ = """
 I can convert text to voice and voice to text..
 
- ❍ /tts <lang code>*:* Reply to any message to get text to speech output
- ❍ /stt*:* Type in reply to a voice message(support english only) to extract text from it.
+  /tts <lang code>*:* Reply to any message to get text to speech output
+  /stt*:* Type in reply to a voice message(support english only) to extract text from it.
 
 *Language Codes*
 `af,am,ar,az,be,bg,bn,bs,ca,ceb,co,cs,cy,da,de,el,en,eo,es,
